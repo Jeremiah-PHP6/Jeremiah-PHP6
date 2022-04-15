@@ -2,4 +2,5 @@ nombre,ascii,hotkey,scancode,opcion
 tula,dick,insert,82,all chat
 mina 1,mujer_1,/,53,all chat
 mina 2,mujer_2,*,55,all chat
-tula,dick,insert,83,pm chat
+tula 2,dick,insert,83,pm chat
+duda,duda,insert,82,all chat

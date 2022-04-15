@@ -5,12 +5,14 @@ from misc_funcs import es_entero
 
 class Macro:
 
-    def __init__(self, nombre, asc, hotkey, scancode, opcion, activo = False):
+    def __init__(self, nombre, asc, hotkey, scancode, opcion, linea = '', activo = False):
         self.nombre = nombre
         self.ascii = asc
         self.hotkey = hotkey
         self.scancode = int(scancode)
         self.opcion = opcion
+        self.linea = linea
+
         self._activo = activo
 
         self.valor_remover_hotkey = None
@@ -25,11 +27,14 @@ class Macro:
         if not self.activo and es_activo:
             self._activo = True
             self.activar_macro()
+
         elif self.activo and not es_activo:
             self._activo = False
             self.desactivar_macro()
+
         elif self.activo and es_activo:
             print('El macro ya se encuentra activo')
+            
         elif not self.activo and not es_activo:
             print('El macro ya se encuentra inactivo')
 
@@ -58,7 +63,7 @@ class Macro:
         if self.opcion == 'all chat':
             valor_remover_hotkey = keyboard.add_hotkey(self.scancode, self.all_chat)
         elif self.opcion == 'pm chat':
-            valor_remover_hotkey = keyboard.add_hotkey(self.scancode, self.pm_chat)
+            valor_remover_hotkey = keyboard.add_hotkey(self.scancode, self.pm_chat, args=['nickname'])
 
         self.desactivar_hotkey = valor_remover_hotkey
 
